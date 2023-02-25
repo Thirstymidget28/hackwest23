@@ -1,49 +1,85 @@
 import React, {useState} from 'react';
 import {View, Image, TouchableOpacity, Text, StyleSheet} from 'react-native';
 
-const mainMenuLayout = () => {
-  return ( // Create a Flex space that can be filled with UI elements.
-    <PreviewLayout
-        label = "Food Finder"
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-        // Draw main layout
-        style={[styles.container, {flexDirection: 'column'},]}>
-    </PreviewLayout>
-  );
-}
 
-const PreviewLayout = ({
-  label,
-  children,
-  values,
-  selectedValue,
-  setSelectedValue,
-}) => (
-  <View style={{flex: 1}}>
-    <View style= {{flex: 1/8, backgroundColor: 'red'}}>
-      <TouchableOpacity style={[styles.filter, {zIndex: 1}]}>
+ const vStack = createNativeStackNavigator();
+
+ const viewStack = () => {
+    return (
+      <NavigationContainer>
+          <vStack.Navigator>
+              <vStack.Screen 
+                  name = "Home"
+                  component = {HomeLayout}
+                  options = {{headerShown: false}}
+              />
+              <vStack.Screen
+                  name = "Filters"
+                  component = {FilterLayout}
+                  options = {{headerShown: false}}
+              />
+          </vStack.Navigator>
+      </NavigationContainer>
+    )
+ }
+
+const HomeLayout = ({navigation}) => {
+  const onPress = () => navigation.navigate('Filters');
+
+  return(
+      // Home Screen View
+  <View style={[styles.container, {flexDirection: 'column'},]}>
+    <View style= {{flex: 1/8, backgroundColor: 'lightblue'}}>
+      <TouchableOpacity style={[styles.filter, {zIndex: 1}]} onPress={onPress}>
         <Image style={[styles.gearImg, {zIndex: 2}]}
         source = {require('./assets/gear-icon.png')}/>
       </TouchableOpacity>
-      <Text style={styles.label}>{label}</Text>
+      <Text style={styles.label}>{"Food Finder"}</Text>
 
     </View>
     <View style= {{flex: 1/200, backgroundColor: 'black'}} />
-    
-    
+  
+  
     <View style= {{flex: 1, backgroundColor: 'lightgrey'}}>
-        {/* ALL MAIN MENU BUTTONS / ITEMS INSIDE THIS VIEW 
+      {/* ALL MAIN MENU BUTTONS / ITEMS INSIDE THIS VIEW 
               - Create menu options
               - Create buttons
-        */}
-        
+      */}
+      
     </View>
-   
-   
+ 
     <View style= {{flex: 1/200, backgroundColor: 'black'}} />
-    <View style= {{flex: 1/16, backgroundColor: 'red'}} />
+    <View style= {{flex: 1/16, backgroundColor: 'lightblue'}} />
   </View>
-);
+  );
+}
+
+const FilterLayout = ({navigation}) => {
+  return (
+    <View style={[styles.container, {flexDirection: 'column'},]}>
+      <View style= {{flex: 1/8, backgroundColor: 'lightblue'}}>
+        <TouchableOpacity style={[styles.filter, {zIndex: 1}]} onPress={onPress}>
+          <Image style={[styles.gearImg, {zIndex: 2}]}
+          source = {require('./assets/gear-icon.png')}/>
+        </TouchableOpacity>
+        <Text style={styles.label}>{"Food Finder"}</Text>
+
+      </View>
+      <View style= {{flex: 1/200, backgroundColor: 'black'}} />
+    
+    
+      <View style= {{flex: 1, backgroundColor: 'lightgrey'}}>
+        
+      </View>
+  
+    <View style= {{flex: 1/200, backgroundColor: 'black'}} />
+    <View style= {{flex: 1/16, backgroundColor: 'lightblue'}} />
+  </View>
+  );
+}
 
 // Style sheet dictates general properties of items
 const styles = StyleSheet.create({
@@ -69,4 +105,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default mainMenuLayout;
+export default viewStack;
