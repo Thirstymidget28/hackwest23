@@ -7,6 +7,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
  const vStack = createNativeStackNavigator();
 
+// viewStack Object, contains the different routes between screens
  const viewStack = () => {
     return (
       <NavigationContainer>
@@ -26,14 +27,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
     )
  }
 
+ // homeLayout View, contains the 'layout' for the homeScreen
 const HomeLayout = ({navigation}) => {
-  const onPress = () => navigation.navigate('Filters');
 
   return(
       // Home Screen View
   <View style={[styles.container, {flexDirection: 'column'},]}>
     <View style= {{flex: 1/8, backgroundColor: 'lightblue'}}>
-      <TouchableOpacity style={[styles.filter, {zIndex: 1}]} onPress={onPress}>
+      <TouchableOpacity style={[styles.filter, {zIndex: 1}]} onPress={() => navigation.navigate('Filters')}>
         <Image style={[styles.smallImg, {zIndex: 2}]}
         source = {require('./assets/gear-icon.png')}/>
       </TouchableOpacity>
@@ -57,13 +58,13 @@ const HomeLayout = ({navigation}) => {
   );
 }
 
+// filterLayout View, contains the 'filter' for the filterScreen
 const FilterLayout = ({navigation}) => {
-  const onPress = () => navigation.navigate('Home');
 
   return (
     <View style={[styles.container, {flexDirection: 'column'},]}>
       <View style= {{flex: 1/8, backgroundColor: 'lightblue'}}>
-        <TouchableOpacity style={[styles.chevron, {zIndex: 1}]} onPress={onPress}>
+        <TouchableOpacity style={[styles.chevron, {zIndex: 1}]} onPress={() => navigation.navigate('Home')}>
           <Image style={[styles.smallImg, {transform: [{scaleX:-1}], zIndex: 2}]}
           source = {require('./assets/chevron-icon.png')}/>
         </TouchableOpacity>
@@ -71,10 +72,33 @@ const FilterLayout = ({navigation}) => {
 
       </View>
       <View style= {{flex: 1/200, backgroundColor: 'black'}} />
-    
-    
       <View style= {{flex: 1, backgroundColor: 'lightgrey'}}>
-        
+        {/* FILTER BUTTONS AND SHIT HERE */}
+
+      </View>
+  
+    <View style= {{flex: 1/200, backgroundColor: 'black'}} />
+    <View style= {{flex: 1/16, backgroundColor: 'lightblue'}} />
+  </View>
+  );
+}
+
+const selectionLayout = ({navigation}) => {
+
+  return (
+    <View style={[styles.container, {flexDirection: 'column'},]}>
+      <View style= {{flex: 1/8, backgroundColor: 'lightblue'}}>
+        <TouchableOpacity style={[styles.chevron, {zIndex: 1}]} onPress={() => navigation.navigate('Home')}>
+          <Image style={[styles.smallImg, {transform: [{scaleX:-1}], zIndex: 2}]}
+          source = {require('./assets/chevron-icon.png')}/>
+        </TouchableOpacity>
+        <Text style={styles.label}>{"Food Finder"}</Text>
+
+      </View>
+      <View style= {{flex: 1/200, backgroundColor: 'black'}} />
+      <View style= {{flex: 1, backgroundColor: 'lightgrey'}}>
+        {/* FOOD TINDER BUTTONS AND SHIT HERE ---- HOT OR NOT FEATURE */}
+
       </View>
   
     <View style= {{flex: 1/200, backgroundColor: 'black'}} />
@@ -115,4 +139,5 @@ const styles = StyleSheet.create({
 
 });
 
+// Default export
 export default viewStack;
