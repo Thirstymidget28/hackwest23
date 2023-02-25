@@ -7,6 +7,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
  const vStack = createNativeStackNavigator();
 
+// viewStack Object, contains the different routes between screens
  const viewStack = () => {
     return (
       <NavigationContainer>
@@ -26,6 +27,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
     )
  }
 
+ // homeLayout View, contains the 'layout' for the homeScreen
 const HomeLayout = ({navigation}) => {
   const onPress = () => navigation.navigate('Filters');
 
@@ -57,6 +59,7 @@ const HomeLayout = ({navigation}) => {
   );
 }
 
+// filterLayout View, contains the 'filter' for the filterScreen
 const FilterLayout = ({navigation}) => {
   const onPress = () => navigation.navigate('Home');
 
@@ -71,10 +74,9 @@ const FilterLayout = ({navigation}) => {
 
       </View>
       <View style= {{flex: 1/200, backgroundColor: 'black'}} />
-    
-    
       <View style= {{flex: 1, backgroundColor: 'lightgrey'}}>
-        
+        {/* FILTER BUTTONS AND SHIT HERE */}
+
       </View>
   
     <View style= {{flex: 1/200, backgroundColor: 'black'}} />
@@ -115,4 +117,5 @@ const styles = StyleSheet.create({
 
 });
 
+// Default export
 export default viewStack;
