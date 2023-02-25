@@ -1,37 +1,52 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
 
-const Flex = () => {
-  return (
-    <View style={[styles.container, {flexDirection: 'column'},]}>
-        <View style= {{flex: 1, backgroundColor: 'red'}} />
-        <View style= {{flex: 2, backgroundColor: 'red'}} />
-        <View style= {{flex: 3, backgroundColor: 'red'}} />
+const mainMenuLayout = () => {
+  return ( // Create a Flex space that can be filled with UI elements.
+    <PreviewLayout
+        label = "Food Finder"
 
-    </View>
+        // Draw main layout
+        style={[styles.container, {flexDirection: 'column'},]}>
+    </PreviewLayout>
   );
 }
 
-/*
-export default function App() {
-  return (
-    <View style={[styles.container, {flexDirection: 'column'},]}>
-        <View style= {{flex: 1, backgroundColor: 'red'}} />
-        <View style= {{flex: 2, backgroundColor: 'red'}} />
-        <View style= {{flex: 3, backgroundColor: 'red'}} />
-
+const PreviewLayout = ({
+  label,
+}) => (
+  <View style={{flex: 1}}>
+    <View style= {{flex: 1/8, backgroundColor: 'red'}}>
+      <Text style={styles.label}>{label}</Text>
     </View>
-  );
-}
-*/
+    <View style= {{flex: 1/200, backgroundColor: 'black'}} />
+    
+    
+    <View style= {{flex: 1, backgroundColor: 'lightgrey'}}>
+        {/* ALL MAIN MENU BUTTONS / ITEMS INSIDE THIS VIEW 
+              - Create menu options
+              - Create buttons
+        */}
+        
+    </View>
+   
+   
+    <View style= {{flex: 1/200, backgroundColor: 'black'}} />
+    <View style= {{flex: 1/16, backgroundColor: 'red'}} />
+  </View>
+);
+
+// Style sheet dictates general properties of items
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  label: {
+    textAlign: 'center',
+    marginTop: 45,
+    fontSize: 24,
+    fontWeight: 'bold',
   },
 });
 
-export default Flex;
+export default mainMenuLayout;
