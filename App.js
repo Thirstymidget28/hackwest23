@@ -4,11 +4,11 @@ import {View, Image, TouchableOpacity, Text, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-
  const vStack = createNativeStackNavigator();
 
 // viewStack Object, contains the different routes between screens
  const viewStack = () => {
+  
     return (
       <NavigationContainer>
           <vStack.Navigator>
@@ -83,7 +83,7 @@ const FilterLayout = ({navigation}) => {
   );
 }
 
-const selectionLayout = ({navigation}) => {
+const finderLayout = ({navigation}) => {
 
   return (
     <View style={[styles.container, {flexDirection: 'column'},]}>
@@ -98,6 +98,30 @@ const selectionLayout = ({navigation}) => {
       <View style= {{flex: 1/200, backgroundColor: 'black'}} />
       <View style= {{flex: 1, backgroundColor: 'lightgrey'}}>
         {/* FOOD TINDER BUTTONS AND SHIT HERE ---- HOT OR NOT FEATURE */}
+
+      </View>
+  
+    <View style= {{flex: 1/200, backgroundColor: 'black'}} />
+    <View style= {{flex: 1/16, backgroundColor: 'lightblue'}} />
+  </View>
+  );
+}
+
+const menuLayout = ({navigation}) => {
+
+  return (
+    <View style={[styles.container, {flexDirection: 'column'},]}>
+      <View style= {{flex: 1/8, backgroundColor: 'lightblue'}}>
+        <TouchableOpacity style={[styles.chevron, {zIndex: 1}]} onPress={() => navigation.navigate('Home')}>
+          <Image style={[styles.smallImg, {transform: [{scaleX:-1}], zIndex: 2}]}
+          source = {require('./assets/chevron-icon.png')}/>
+        </TouchableOpacity>
+        <Text style={styles.label}>{"Food Finder"}</Text>
+
+      </View>
+      <View style= {{flex: 1/200, backgroundColor: 'black'}} />
+      <View style= {{flex: 1, backgroundColor: 'lightgrey'}}>
+        {/* SCROLLABLE RESTARAUNT MENU WITH REVIEWS */}
 
       </View>
   
