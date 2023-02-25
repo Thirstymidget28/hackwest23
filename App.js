@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Food poop</Text>
+      <Text>Food Finder</Text>
       <StatusBar style="auto" />
     </View>
   );
