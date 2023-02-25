@@ -34,7 +34,7 @@ const HomeLayout = ({navigation}) => {
   <View style={[styles.container, {flexDirection: 'column'},]}>
     <View style= {{flex: 1/8, backgroundColor: 'lightblue'}}>
       <TouchableOpacity style={[styles.filter, {zIndex: 1}]} onPress={onPress}>
-        <Image style={[styles.gearImg, {zIndex: 2}]}
+        <Image style={[styles.smallImg, {zIndex: 2}]}
         source = {require('./assets/gear-icon.png')}/>
       </TouchableOpacity>
       <Text style={styles.label}>{"Food Finder"}</Text>
@@ -58,14 +58,16 @@ const HomeLayout = ({navigation}) => {
 }
 
 const FilterLayout = ({navigation}) => {
+  const onPress = () => navigation.navigate('Home');
+
   return (
     <View style={[styles.container, {flexDirection: 'column'},]}>
       <View style= {{flex: 1/8, backgroundColor: 'lightblue'}}>
-        <TouchableOpacity style={[styles.filter, {zIndex: 1}]} onPress={onPress}>
-          <Image style={[styles.gearImg, {zIndex: 2}]}
-          source = {require('./assets/gear-icon.png')}/>
+        <TouchableOpacity style={[styles.chevron, {zIndex: 1}]} onPress={onPress}>
+          <Image style={[styles.smallImg, {transform: [{scaleX:-1}], zIndex: 2}]}
+          source = {require('./assets/chevron-icon.png')}/>
         </TouchableOpacity>
-        <Text style={styles.label}>{"Food Finder"}</Text>
+        <Text style={styles.label}>{"Filters"}</Text>
 
       </View>
       <View style= {{flex: 1/200, backgroundColor: 'black'}} />
@@ -99,10 +101,18 @@ const styles = StyleSheet.create({
     width: 35,
     height: 35,
   },
-  gearImg: {
+  smallImg: {
     width: 30,
     height: 30,
+  },
+  chevron: {
+    alignSelf: 'flex-start',
+    marginLeft: 10,
+    marginTop: 50,
+    width: 35,
+    height: 35,
   }
+
 });
 
 export default viewStack;
