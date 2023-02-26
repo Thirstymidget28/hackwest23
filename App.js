@@ -47,7 +47,7 @@ const HomeLayout = ({navigation}) => {
       {
         <View style={styles.buttonContainer}>
           <Pressable style={[styles.button, {zIndex:1}]} onPress = {() => alert('You pressed a button')}>
-            <Text style = {styles.buttonLabel}>{"ALL"}</Text>
+            <Text style = {styles.buttonLabel}>["ALL"]</Text>
           </Pressable>
         </View>  
 
