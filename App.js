@@ -47,7 +47,7 @@ const HomeLayout = ({navigation}) => {
       {
         <View style={styles.buttonContainer}>
           <Pressable style={[styles.button, {zIndex:1}]} onPress = {() => alert('You pressed a button')}>
-            <Text style = {styles.buttonLabel}>{label}</Text>
+            <Text style = {styles.buttonLabel}>{"ALL"}</Text>
           </Pressable>
         </View>  
 
@@ -119,6 +119,7 @@ const styles = StyleSheet.create({
   buttonContainer:{
     width: 320,
     height: 68,
+    color: '#d2d1f0',
     marginHorizontal: 20,
     alignItems: 'center',
     justifyContent: 'center',
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   buttonIcon: {
-    color: '#fff',
+    color: '#d2d1f0',
     fontSize: 16,
   },
 });
