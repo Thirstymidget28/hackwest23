@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Image, TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {View, Image, TouchableOpacity, Text, StyleSheet, Pressable} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -44,10 +44,14 @@ const HomeLayout = ({navigation}) => {
   
   
     <View style= {{flex: 1, backgroundColor: 'lightgrey'}}>
-      {/* ALL MAIN MENU BUTTONS / ITEMS INSIDE THIS VIEW 
-              - Create menu options
-              - Create buttons
-      */}
+      {
+        <View style={styles.buttonContainer}>
+          <Pressable style={[styles.button, {zIndex:1}]} onPress = {() => alert('You pressed a button')}>
+            <Text style = {styles.buttonLabel}>["ALL"]</Text>
+          </Pressable>
+        </View>  
+
+      }
       
     </View>
  
@@ -111,8 +115,28 @@ const styles = StyleSheet.create({
     marginTop: 50,
     width: 35,
     height: 35,
-  }
-
+  },
+  buttonContainer:{
+    width: 320,
+    height: 68,
+    color: '#d2d1f0',
+    marginHorizontal: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  button: {
+    borderRadius: 10,
+    width: '100%', 
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+  },
+  buttonIcon: {
+    color: '#d2d1f0',
+    fontSize: 16,
+  },
 });
 
 export default viewStack;
