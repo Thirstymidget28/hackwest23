@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Image, TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {View, Image, TouchableOpacity, Text, StyleSheet, Pressable} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
