@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {View, Image, TouchableOpacity, Text, StyleSheet, Dimensions, Animated, PanResponder, Alert} from 'react-native';
+
+import {View, Image, TouchableOpacity, Text, StyleSheet, Dimensions, Animated, PanResponder} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -23,7 +24,6 @@ const finderFoods = [
 export default class App extends React.Component {
   // viewStack Object, contains the different routes between screens
   viewStack = () => {
-
     return (
       <NavigationContainer>
           <vStack.Navigator>
@@ -49,10 +49,21 @@ export default class App extends React.Component {
       </NavigationContainer>
     )
 }
-
+  
 // homeLayout View, contains the 'layout' for the homeScreen
   HomeLayout = ({navigation}) => {
+      const onPress = () => navigation.navigate('Filters');
+    let allFood = [['pizza', require('./assets/Pizza.png')], ['hotdog', require('./assets/Hotdog.png')], ['sushi', require('./assets/Sushi.png')], ['ramen', require('./assets/Ramen.png')], ['burger', require('./assets/Burger.png')], ['fried chicken', require('./assets/FriedChicken.png')]]
+    let blackListed = SetBlackList = () => [];
+    let foodList = [];
 
+    for(let i = 0; i< blackListed.length; i++){
+      for(let j = 0; j < allFood.length; j++){
+        if(allFood[j][1]!=blackListed[i]){
+          foodList.push(allFood[j]);
+        }
+      }
+    }
     return(
         // Home Screen View
     <View style={[this.styles.container, {flexDirection: 'column'},]}>
@@ -72,6 +83,63 @@ export default class App extends React.Component {
                 - Create menu options
                 - Create buttons
         */}
+        <View style = {this.styles.buttonContainer2}>
+    <View style = {this.styles.buttonContainer3}>
+      <TouchableOpacity style = {[this.styles.button, {zIndex:1}]}
+        activeOpacity = {0.50}>
+          <Image
+            style = {[this.styles.foodImg, {zIndex:1}]}
+            source = {allFood[0][1]}/>
+      </TouchableOpacity>
+      </View>
+      <View style ={this.styles.buttonContainer3}>
+      <TouchableOpacity style = {[this.styles.button, {zIndex:1}]}
+        activeOpacity = {0.50}>
+        <Image
+          style = {[this.styles.foodImg, {zIndex:1}]}
+        source = {allFood[1][1]}/>
+      </TouchableOpacity>
+      </View>
+    </View>
+
+    <View style = {this.styles.buttonContainer2}>
+    <View style = {this.styles.buttonContainer3}>
+      <TouchableOpacity style = {[this.styles.button, {zIndex:1}]}
+        activeOpacity = {0.50}>
+        <Image
+          style = {[this.styles.foodImg, {zIndex:1}]}
+          source = {allFood[2][1]}/>
+      </TouchableOpacity>
+      </View>
+      <View style ={this.styles.buttonContainer3}>
+      <TouchableOpacity style = {[this.styles.button, {zIndex:1}]}
+        activeOpacity = {0.50}>
+        <Image
+          style = {[this.styles.foodImg, {zIndex:1}]}
+        source = {allFood[3][1]}/>
+      </TouchableOpacity>
+      </View>
+    </View>
+
+    <View style = {this.styles.buttonContainer2}>
+    <View style = {this.styles.buttonContainer3}>
+      <TouchableOpacity style = {[this.styles.button, {zIndex:1}]}
+        activeOpacity = {0.50}>
+        <Image
+          style = {[this.styles.foodImg, {zIndex:1}]}
+          source = {allFood[4][1]}/>
+      </TouchableOpacity>
+      </View>
+      <View style ={this.styles.buttonContainer3}>
+      <TouchableOpacity style = {[this.styles.button, {zIndex:1}]}
+        activeOpacity = {0.50}>
+        <Image
+          style = {[this.styles.foodImg, {zIndex:1}]}
+        source = {allFood[5][1]}/>
+      </TouchableOpacity>
+      </View>
+    </View>
+
         <TouchableOpacity style={[this.styles.random, {zIndex: 1}]} onPress={() => navigation.navigate('Tinder')}>
           <Image style={[this.styles.medImg, {zIndex: 2}]}
           source = {require('./assets/dice-icon.png')}/>
@@ -209,11 +277,10 @@ export default class App extends React.Component {
       <View style= {{flex: 1/16, backgroundColor: 'lightblue'}} />
     </View>
     );
-  }
+}
 
 // menuLayout View, contains the 'menu' for the selected restaraunt
   MenuLayout = ({navigation}) => {
-
   return (
     <View style={[this.styles.container, {flexDirection: 'column'},]}>
       <View style= {{flex: 1/8, backgroundColor: 'lightblue'}}>
@@ -225,6 +292,8 @@ export default class App extends React.Component {
 
       </View>
       <View style= {{flex: 1/200, backgroundColor: 'black'}} />
+    
+    
       <View style= {{flex: 1, backgroundColor: 'lightgrey'}}>
         {/* SCROLLABLE RESTARAUNT MENU WITH REVIEWS */}
       </View>
@@ -234,53 +303,89 @@ export default class App extends React.Component {
   </View>
   );
 }
-
   // Style sheet dictates general properties of items
   styles = StyleSheet.create({
     container: {
       flex: 1,
-    },
+      },
     label: {
       marginTop: -35,
       textAlign: 'center',
       fontSize: 24,
       fontWeight: 'bold',
-    },
+      },
     filter: {
       alignSelf: 'flex-end',
       marginRight: 10,
       marginTop:50,
       width: 35,
       height: 35,
-    },
+      },
+    foodImg:{
+    width: 175,
+    height: 175,
+      },
+    buttonContainer3:{
+      flex: 13/18,
+      },
+    buttonContainer2:{
+      flex: 15/8,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      },
+    buttonContainer1:{
+      width: 320,
+      height: 68,
+      color: '#d2d1f0',
+      marginHorizontal: 20,
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'row',
+      },
+    button: {
+      borderRadius: 10,
+      width: '100%', 
+      height: '100%',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'row',
+      },
+    buttonIcon: {
+      color: '#d2d1f0',
+      fontSize: 16,
+      },
+    spaceImg:{
+      margin:10,
+      },
     random: {
       alignSelf: 'center',
       justifyContent: 'center',
-      marginTop:500,
+      marginBottom:10,
       width: 50,
-      height: 250
-    },
+      height: 100
+      },
     medImg: {
       width: 80,
       height: 100,
-    },
+      },
     smallImg: {
       width: 30,
       height: 30,
-    },
+      },
     chevron: {
       alignSelf: 'flex-start',
       marginLeft: 10,
       marginTop: 50,
       width: 35,
       height: 35,
-    },
+      },
     parentView: {
       flex: 1,
       flexDirection: 'column',
       justifyContent: 'space-around',
-  
-    }});
+      }
+    });
 
   // Render the viewStack Screens
   render(){
