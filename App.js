@@ -20,9 +20,8 @@ const finderFoods = [
 ]
 
 export default class App extends React.Component {
-  // viewStack Object, contains the different routes between screens
-  viewStack = () => {
-
+// viewStack Object, contains the different routes between screens
+ const viewStack = () => {
     return (
       <NavigationContainer>
           <vStack.Navigator>
@@ -411,3 +410,4 @@ class swipeApp extends React.Component {
     }).reverse(); //Reverse the card stack
   };
 }
+
